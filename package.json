@@ -1,6 +1,6 @@
 {
   "name": "md2wx",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "scripts": {
     "build": "babel src -d lib -x \".ts\" --source-maps && tsc",
     "lint": "eslint --ext .js,.ts src/",
@@ -9,6 +9,7 @@
   "dependencies": {
     "dompurify": "^2.0.3",
     "highlight.js": "^9.15.10",
+    "katex": "^0.11.1",
     "marked": "^0.7.0"
   },
   "devDependencies": {
@@ -19,6 +20,7 @@
     "@primer/css": "^13.0.1",
     "@types/dompurify": "^0.0.33",
     "@types/highlight.js": "^9.12.3",
+    "@types/katex": "^0.10.2",
     "@types/marked": "^0.6.5",
     "@typescript-eslint/eslint-plugin": "^2.3.1",
     "@typescript-eslint/parser": "^2.3.1",
@@ -43,7 +45,7 @@
   },
   "license": "MIT",
   "description": "Convert Markdown to WeChat compatible HTML, rendered in GitHub flavor",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/eesast/md2wx.git"
