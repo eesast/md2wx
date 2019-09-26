@@ -1,8 +1,6 @@
 {
   "name": "md2wx",
-  "license": "MIT",
-  "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "build": "babel src -d lib -x \".ts\" --source-maps && tsc",
     "lint": "eslint --ext .js,.ts src/",
@@ -42,5 +40,22 @@
       "prettier --write",
       "git add"
     ]
-  }
+  },
+  "license": "MIT",
+  "description": "Convert Markdown to WeChat compatible HTML, rendered in GitHub flavor",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eesast/md2wx.git"
+  },
+  "keywords": [
+    "wechat",
+    "markdown",
+    "github"
+  ],
+  "author": "Rui Ying",
+  "bugs": {
+    "url": "https://github.com/eesast/md2wx/issues"
+  },
+  "homepage": "https://github.com/eesast/md2wx#readme"
 }
