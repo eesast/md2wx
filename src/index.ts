@@ -76,47 +76,52 @@ function renderHtml(md: string, highlight = true) {
 }
 
 async function convertSvgToPng() {
-  const nodes = document.getElementsByClassName("katex");
-  for (let i = 0; i < nodes.length; i++) {
-    const node = nodes.item(i) as HTMLSpanElement;
-    const bases = node.getElementsByClassName("base") as HTMLCollectionOf<
-      HTMLSpanElement
-    >;
+  const nodes = Array.from(
+    document.getElementsByClassName("katex")
+  ) as HTMLSpanElement[];
 
-    const actualSize = Array.from<HTMLSpanElement>(bases).reduce<{
-      width: number;
-      height: number;
-    }>(
-      (prev, base) => ({
-        width: prev.width + base.offsetWidth,
-        height: Math.max(prev.height, base.offsetHeight)
-      }),
-      { width: 0, height: 0 }
-    );
+  await Promise.all(
+    nodes.map(async node => {
+      const bases = node.getElementsByClassName("base") as HTMLCollectionOf<
+        HTMLSpanElement
+      >;
 
-    const ratio = actualSize.width / actualSize.height;
+      const actualSize = Array.from<HTMLSpanElement>(bases).reduce<{
+        width: number;
+        height: number;
+      }>(
+        (prev, base) => ({
+          width: prev.width + base.offsetWidth,
+          height: Math.max(prev.height, base.offsetHeight)
+        }),
+        { width: 0, height: 0 }
+      );
 
-    let renderedHeight;
-    let renderedWidth;
-    if (ratio >= 1) {
-      renderedHeight = Math.max(100, actualSize.height);
-      renderedWidth = renderedHeight * ratio;
-    } else {
-      renderedWidth = Math.max(100, actualSize.width);
-      renderedHeight = renderedWidth / ratio;
-    }
+      const ratio = actualSize.width / actualSize.height;
 
-    const visibleWidth = Math.max(13, actualSize.width);
+      let renderedHeight;
+      let renderedWidth;
+      if (ratio >= 1) {
+        renderedHeight = Math.max(100, actualSize.height);
+        renderedWidth = renderedHeight * ratio;
+      } else {
+        renderedWidth = Math.max(100, actualSize.width);
+        renderedHeight = renderedWidth / ratio;
+      }
 
-    const dataUrl = await DomToImage.toPng(node, {
-      width: renderedWidth,
-      height: renderedHeight
-    });
-    const img = new Image();
-    img.src = dataUrl;
-    (img as any).style = `width:${visibleWidth}px;height:${actualSize.height}px;object-position:left top;object-fit:none;`;
-    node.outerHTML = img.outerHTML;
-  }
+      const visibleWidth = Math.max(13, actualSize.width);
+
+      const dataUrl = await DomToImage.toPng(node, {
+        width: renderedWidth,
+        height: renderedHeight
+      });
+      const img = new Image();
+      img.src = dataUrl;
+      (img as any).style = `width:${visibleWidth}px;height:${actualSize.height}px;object-position:left top;object-fit:none;`;
+      // eslint-disable-next-line
+      node.outerHTML = img.outerHTML;
+    })
+  );
 }
 
 export default { renderHtml, convertSvgToPng };
