@@ -1,6 +1,6 @@
 {
   "name": "md2wx",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "scripts": {
     "build": "babel src -d lib -x \".ts\" --source-maps && tsc",
     "lint": "eslint --ext .js,.ts src/",
@@ -57,6 +57,8 @@
   "keywords": [
     "wechat",
     "markdown",
+    "latex",
+    "katex",
     "github"
   ],
   "author": "Rui Ying",
