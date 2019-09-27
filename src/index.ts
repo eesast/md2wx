@@ -7,7 +7,7 @@ import DomToImage from "dom-to-image";
 const renderer = new Marked.Renderer();
 renderer.code = (code: any, lang: any, isEscaped: any) => {
   if (lang === "math") {
-    return katex.renderToString(code, { throwOnError: false });
+    return `<p>${katex.renderToString(code, { throwOnError: false })}</p>`;
   } else {
     return new Marked.Renderer().code(code, lang, isEscaped);
   }
