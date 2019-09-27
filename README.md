@@ -9,6 +9,15 @@ Convert Markdown to WeChat compatible HTML, rendered in GitHub flavor
 - Support LaTeX via KaTeX
 - Convert LaTeX SVG to WeChat compatible PNG (copy & paste enabled!)
 
+## Installation
+
+```shell
+npm install md2wx
+
+# or
+yarn add md2wx
+```
+
 ## Usage
 
 ```js
