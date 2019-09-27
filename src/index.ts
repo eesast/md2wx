@@ -2,9 +2,10 @@ import DOMPurify from "dompurify";
 import hljs from "highlight.js";
 import Marked from "marked";
 import katex from "katex";
+import DomToImage from "dom-to-image";
 
 const renderer = new Marked.Renderer();
-renderer.code = (code, lang, isEscaped) => {
+renderer.code = (code: any, lang: any, isEscaped: any) => {
   if (lang === "math") {
     return katex.renderToString(code, { throwOnError: false });
   } else {
@@ -55,17 +56,7 @@ const bodyCSS = preval`
   module.exports = fs.readFileSync(require.resolve('./markdown-body.css'), 'utf8')
 `;
 
-const render: (md: string, highlight?: boolean) => string = (md, highlight) => {
-  if (highlight) {
-    Marked.setOptions({
-      highlight: code => {
-        return hljs.highlightAuto(code).value;
-      },
-      sanitize: true,
-      sanitizer: DOMPurify.sanitize
-    });
-  }
-
+function renderHtml(md: string, highlight = true) {
   return `
     <html>
       <head>
@@ -82,6 +73,50 @@ const render: (md: string, highlight?: boolean) => string = (md, highlight) => {
         </article>
       </body>
     </html>`;
-};
+}
 
-export default render;
+async function convertSvgToPng() {
+  const nodes = document.getElementsByClassName("katex");
+  for (let i = 0; i < nodes.length; i++) {
+    const node = nodes.item(i) as HTMLSpanElement;
+    const bases = node.getElementsByClassName("base") as HTMLCollectionOf<
+      HTMLSpanElement
+    >;
+
+    const actualSize = Array.from<HTMLSpanElement>(bases).reduce<{
+      width: number;
+      height: number;
+    }>(
+      (prev, base) => ({
+        width: prev.width + base.offsetWidth,
+        height: Math.max(prev.height, base.offsetHeight)
+      }),
+      { width: 0, height: 0 }
+    );
+
+    const ratio = actualSize.width / actualSize.height;
+
+    let renderedHeight;
+    let renderedWidth;
+    if (ratio >= 1) {
+      renderedHeight = Math.max(100, actualSize.height);
+      renderedWidth = renderedHeight * ratio;
+    } else {
+      renderedWidth = Math.max(100, actualSize.width);
+      renderedHeight = renderedWidth / ratio;
+    }
+
+    const visibleWidth = Math.max(13, actualSize.width);
+
+    const dataUrl = await DomToImage.toPng(node, {
+      width: renderedWidth,
+      height: renderedHeight
+    });
+    const img = new Image();
+    img.src = dataUrl;
+    (img as any).style = `width:${visibleWidth}px;height:${actualSize.height}px;object-position:left top;object-fit:none;`;
+    node.outerHTML = img.outerHTML;
+  }
+}
+
+export default { renderHtml, convertSvgToPng };
