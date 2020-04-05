@@ -24,8 +24,7 @@ Marked.setOptions({
   highlight: (code) => {
     return hljs.highlightAuto(code).value;
   },
-  sanitize: true,
-  sanitizer: DOMPurify.sanitize,
+  sanitize: false,
   renderer,
 });
 
@@ -69,7 +68,7 @@ function renderHtml(md: string, highlight = true) {
       </head>
       <body>
         <article class="markdown-body">
-          ${Marked(md)}
+          ${DOMPurify.sanitize(Marked(md))}
         </article>
       </body>
     </html>`;
