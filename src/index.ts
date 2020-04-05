@@ -2,7 +2,7 @@ import DOMPurify from "dompurify";
 import hljs from "highlight.js";
 import Marked from "marked";
 import katex from "katex";
-import DomToImage from "dom-to-image";
+import HtmlToImage from "html-to-image";
 
 const renderer = new Marked.Renderer();
 renderer.code = (code: any, lang: any, isEscaped: any) => {
@@ -12,7 +12,7 @@ renderer.code = (code: any, lang: any, isEscaped: any) => {
     return new Marked.Renderer().code(code, lang, isEscaped);
   }
 };
-renderer.codespan = code => {
+renderer.codespan = (code) => {
   if (code.length >= 2 && code.startsWith("$") && code.endsWith("$")) {
     return katex.renderToString(code.slice(1, -1), { throwOnError: false });
   } else {
@@ -21,12 +21,12 @@ renderer.codespan = code => {
 };
 
 Marked.setOptions({
-  highlight: code => {
+  highlight: (code) => {
     return hljs.highlightAuto(code).value;
   },
   sanitize: true,
   sanitizer: DOMPurify.sanitize,
-  renderer
+  renderer,
 });
 
 declare const preval: any;
@@ -81,7 +81,7 @@ async function convertSvgToPng() {
   ) as HTMLSpanElement[];
 
   await Promise.all(
-    nodes.map(async node => {
+    nodes.map(async (node) => {
       const bases = node.getElementsByClassName("base") as HTMLCollectionOf<
         HTMLSpanElement
       >;
@@ -92,7 +92,7 @@ async function convertSvgToPng() {
       }>(
         (prev, base) => ({
           width: prev.width + base.offsetWidth,
-          height: Math.max(prev.height, base.offsetHeight)
+          height: Math.max(prev.height, base.offsetHeight),
         }),
         { width: 0, height: 0 }
       );
@@ -111,9 +111,9 @@ async function convertSvgToPng() {
 
       const visibleWidth = Math.max(13, actualSize.width);
 
-      const dataUrl = await DomToImage.toPng(node, {
+      const dataUrl = await HtmlToImage.toPng(node, {
         width: renderedWidth,
-        height: renderedHeight
+        height: renderedHeight,
       });
       const img = new Image();
       img.src = dataUrl;
