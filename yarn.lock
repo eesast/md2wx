@@ -857,10 +857,10 @@
   resolved "https://registry.npm.taobao.org/@types/katex/download/@types/katex-0.11.0.tgz#b16c54ee670925ffef0616beae9e90c557e17334"
   integrity sha1-sWxU7mcJJf/vBha+rp6QxVfhczQ=
 
-"@types/marked@^0.7.3":
-  version "0.7.3"
-  resolved "https://registry.npm.taobao.org/@types/marked/download/@types/marked-0.7.3.tgz#3859f6fea52a2b73f42283018bd34b03f3c4fb3f"
-  integrity sha1-OFn2/qUqK3P0IoMBi9NLA/PE+z8=
+"@types/marked@1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@types/marked/-/marked-1.2.1.tgz#9864ecc10d0edb72e7be4e94acb5fcc607c15eed"
+  integrity sha512-d5adCgRHB+NAme23hkiTkvpfZUDqoNtL2Sr2nZBJqSj3zyHLxsfFWsGQ2sK2z9aX6L1xkJzon2c0jTPcsEjpaQ==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -2470,10 +2470,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-marked@^0.8.2:
-  version "0.8.2"
-  resolved "https://registry.npm.taobao.org/marked/download/marked-0.8.2.tgz#4faad28d26ede351a7a1aaa5fec67915c869e355"
-  integrity sha1-T6rSjSbt41Gnoaql/sZ5Fchp41U=
+marked@^1.0.0:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-1.2.6.tgz#fa55cf38ab3585005c9fb3c1ebfb3d4590c29fdc"
+  integrity sha512-7vVuSEZ8g/HH3hK/BH/+7u/NJj7x9VY4EHzujLDcqAQLiOUeFJYAsfSAyoWtR17lKrx7b08qyIno4lffwrzTaA==
 
 merge-stream@^2.0.0:
   version "2.0.0"
