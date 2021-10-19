@@ -804,19 +804,17 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@primer/css@^14.3.0":
-  version "14.3.0"
-  resolved "https://registry.npm.taobao.org/@primer/css/download/@primer/css-14.3.0.tgz#66d3e25a6c750e65d06234d1cf4e16a32567c611"
-  integrity sha1-ZtPiWmx1DmXQYjTRz04WoyVnxhE=
+"@primer/css@18.0.1":
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-18.0.1.tgz#74ce5659ea48c3b13d1be7129670d3fcc0c663be"
+  integrity sha512-6xc0SAQGFDNl7Lc1ETOl5CIaLP4P3Vo+soWisoCNGWlLbJlHUAJGCSyLR1nZpoIS7vbZeSmwULUzOXzpnFpTFg==
   dependencies:
-    "@primer/octicons" "^9.1.1"
+    "@primer/primitives" "^5.0.0"
 
-"@primer/octicons@^9.1.1":
-  version "9.6.0"
-  resolved "https://registry.npm.taobao.org/@primer/octicons/download/@primer/octicons-9.6.0.tgz#e195f2dd5f30b6918ad5d8ff224c12f778d02408"
-  integrity sha1-4ZXy3V8wtpGK1dj/IkwS93jQJAg=
-  dependencies:
-    object-assign "^4.1.1"
+"@primer/primitives@^5.0.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-5.1.0.tgz#698ad3a173f3a1d7090651cce0a7088e4b93da39"
+  integrity sha512-pW8DIh6rZV0/R7lxHnVRJ/tdN4kDVSpAtdcCecxKsvtgK5d9haekt3ERpM6i93xKwB5CJYy9ouuC9C0UqWPI0A==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -2620,7 +2618,7 @@ number-is-nan@^1.0.0:
   resolved "https://registry.npm.taobao.org/number-is-nan/download/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-object-assign@^4.1.0, object-assign@^4.1.1:
+object-assign@^4.1.0:
   version "4.1.1"
   resolved "https://registry.npm.taobao.org/object-assign/download/object-assign-4.1.1.tgz?cache=0&sync_timestamp=1571657171505&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fobject-assign%2Fdownload%2Fobject-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
