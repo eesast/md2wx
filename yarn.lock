@@ -857,10 +857,10 @@
   resolved "https://registry.npm.taobao.org/@types/katex/download/@types/katex-0.11.0.tgz#b16c54ee670925ffef0616beae9e90c557e17334"
   integrity sha1-sWxU7mcJJf/vBha+rp6QxVfhczQ=
 
-"@types/marked@^0.7.3":
-  version "0.7.3"
-  resolved "https://registry.npm.taobao.org/@types/marked/download/@types/marked-0.7.3.tgz#3859f6fea52a2b73f42283018bd34b03f3c4fb3f"
-  integrity sha1-OFn2/qUqK3P0IoMBi9NLA/PE+z8=
+"@types/marked@^4.0.0":
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/@types/marked/-/marked-4.0.7.tgz#400a76809fd08c2bbd9e25f3be06ea38c8e0a1d3"
+  integrity sha512-eEAhnz21CwvKVW+YvRvcTuFKNU9CV1qH+opcgVK3pIMI6YZzDm6gc8o2vHjldFk6MGKt5pueSB7IOpvpx5Qekw==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
